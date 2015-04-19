@@ -1,10 +1,11 @@
 # flatpack
 
-A Clojure library designed to ... well, that part is up to you.
+Utilities for sequencing into modular synthesisers. 
 
 ## Usage
 
-FIXME
+1. Load REPL
+1. Use functions such as <code>beats</code> and <code>repeater</code>
 
 ## License
 
