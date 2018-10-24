@@ -5,15 +5,6 @@
   (:require [flatpack.grid-display :as disp]
             [flatpack.launchpad :as lp]))
 
-(defn launchpad-handler [{:keys [event key] :as m}]
-  (if m
-    (if (= :press event)
-      (cond (vector? key) (let [[x y] key]
-                            (disp/light-set LAUNCHPAD x y (rand-nth (range 1 4))))
-            (= :session key) (launchpad-off)
-            (= :user1 key) (launchpad-shiny)))
-    (println m)))
-
 (defonce LAUNCHPAD
   (lp/make-launchpad lp/default-palette))
 
@@ -50,6 +41,14 @@
   (let [timings (beats nome cnt)]
     (map #(at (nome %1) (inst %2)) timings (flatten (repeatedly melody-fn)))))
 
+(defn launchpad-handler [{:keys [event key] :as m}]
+  (if m
+    (if (= :press event)
+      (cond (vector? key) (let [[x y] key]
+                            (disp/light-set LAUNCHPAD x y (rand-nth (range 1 4))))
+            (= :session key) (launchpad-off)
+            (= :user1 key) (launchpad-shiny)))
+    (println m)))
 
 (comment
 
